@@ -42,12 +42,28 @@ public class ArrayPriorityQueue{
  
     public static void main( String[] args){
 	ArrayPriorityQueue bob = new ArrayPriorityQueue();
-	/*bob.add(1);
+	bob.add( new Ticket("","",1 ));
+	bob.add( new Ticket("","",2 ));
+	bob.add( new Ticket("","",3 ));
+	System.out.println(bob.removeMin());
+	System.out.println(bob.removeMin());
+	System.out.println(bob.removeMin());
+	bob.add( new Ticket("","",3 ));
+	bob.add( new Ticket("","",2 ));
+	bob.add( new Ticket("","",1 ));
+	System.out.println(bob.removeMin());
+	System.out.println(bob.removeMin());
+	System.out.println(bob.removeMin());
+	bob.add( new Ticket("","",2 ));
+	bob.add( new Ticket("","",5 ));
+	bob.add( new Ticket("","",2 ));
+	System.out.println(bob.removeMin());
+	System.out.println(bob.removeMin());
+	System.out.println(bob.removeMin());
+
+	/*
 	bob.add(2);
 	bob.add(3);
-	System.out.println(bob.removeMin());
-	System.out.println(bob.removeMin());
-	System.out.println(bob.removeMin());
 	bob.add(2);
 	bob.add(3);
 	bob.add(1);
