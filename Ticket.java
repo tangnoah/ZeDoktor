@@ -1,6 +1,6 @@
 
 
-public class Ticket {
+public class Ticket implements Comparable {
 
     //INSTANCE VARIABLES
     private int ID;
