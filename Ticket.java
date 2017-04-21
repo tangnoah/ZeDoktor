@@ -30,12 +30,17 @@ public class Ticket implements Comparable {
     public void setStatus(boolean isSolved) {_status = isSolved;}
 
     //compareTo for priority
-    public int compareTo(Ticket t) {
+    public int compareTo(Object o) {
+	Ticket t = (Ticket) o ;
 	if (this.getPriority() > t.getPriority())
 	    return 1;
 	else if (this.getPriority() == t.getPriority())
 	    return 0;
 	else 
 	    return -1;
+    }
+    
+    public String toString(){
+	return "Name: " + _user + "\nProblem: " + _description + "\nPriority: " + _priority;
     }
 }
