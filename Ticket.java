@@ -6,7 +6,7 @@ public class Ticket {
     private int ID;
     private String _user;
     private String _description;
-    private int _status;
+    private boolean _status; 
     private int _priority; //0 is highest priority
 
     //CONSTRUCTOR
@@ -14,8 +14,28 @@ public class Ticket {
 	_user = name;
 	_description = problem;
 	_priority = VIP;
-	//ID = ?
-	//_status = ?
+	_status = false;
+	//ID = will be set in HelpDesk
     }
     
+    //GET METHODS
+    public int getID() {return ID;}
+    public String getName() {return _user;}
+    public String getProb() {return _description;}
+    public boolean getStatus() {return _status;}
+    public int getPriority() {return _priority;};
+    
+    //SET METHODS
+    public void setID(int id) {ID = id;}
+    public void setStatus(boolean isSolved) {_status = isSolved;}
+
+    //compareTo for priority
+    public int compareTo(Ticket t) {
+	if (this.getPriority() > t.getPriority())
+	    return 1;
+	else if (this.getPriority() == t.getPriority())
+	    return 0;
+	else 
+	    return -1;
+    }
 }
