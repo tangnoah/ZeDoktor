@@ -30,6 +30,8 @@ public class HelpDesk {
 	String message = "";
 	while (inputInt == -1){
 	    clear();
+	    
+	    //Startup and choice selection
 	    System.out.println("\nHeLlO aNd WeLcOmE tO tHe HeLp DeSk!\n\n");
 	    System.out.println( message );
 	    System.out.println("Please choose an option:\n");
@@ -52,6 +54,7 @@ public class HelpDesk {
 		
 	}
 
+	//if input == 1, check for their Ticket ID
 	if (inputInt == 1) {
 	    System.out.println("Please enter your Ticket ID number: ");
 	    while( inputID == -1){
@@ -64,6 +67,8 @@ public class HelpDesk {
 		}
 	    }
 	}
+	
+	//if input == 2, create new Ticket
 	else if (inputInt == 2) {
 	    //Store name
 	    System.out.print("Please state your name: ");
@@ -84,8 +89,7 @@ public class HelpDesk {
 		    priority = -1;
 		}
 	    }
-
-
+	    
 	    System.out.println("Processing ticket and generating ID...");
 	    //Create and print new ID here
 	    int ID = -1;
