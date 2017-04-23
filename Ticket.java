@@ -40,7 +40,7 @@ public class Ticket implements Comparable {
 	    return -1;
     }
     
-    public String toString(){
-	return "Name: " + _user + "\nProblem: " + _description + "\nPriority: " + _priority;
+    public int  toString(){
+	return ID;
     }
 }

@@ -39,7 +39,6 @@ public class HelpDesk {
 	    System.out.println("Please choose an option:\n");
 	    System.out.print("1:\tI have a Ticket ID\n");
 	    System.out.print("2:\tI have a problem\n");
-	    System.out.print("3:\tProblem solved\n");
 	    
 	    inputStr =  scanner.nextLine();
 	    try {
@@ -50,8 +49,8 @@ public class HelpDesk {
 		inputInt = -1;
 	    }
 	    if( inputInt != -1 && inputInt != 1 
-		&& inputInt != 2 && inputInt != 3){
-		message = "Please select 1, 2, or 3.";
+		&& inputInt != 2){
+		message = "Please select 1 or 2";
 		inputInt = -1;}
 		
 	}
@@ -109,10 +108,11 @@ public class HelpDesk {
 	    customer = new Ticket(nombre, problema, priority);
 	    System.out.println("Done! Your ticket ID is " + ID);
 	    helpQueue.add(customer);
-	    System.out.println(helpQueue.peekMin());
-	}
-	else if (inputInt == 3) {
-	    System.exit(0);
+	    /*System.out.println("We are currently busy. Please wait until we can process your problem");
+	    if (helpQueue.peekMin() = customer.getID()){
+		System.out.println("Thank you for waiting! It seems your problem is " + customer.getProb());
+	    }
+	    System.out.println(helpQueue.peekMin());*/
 	}
     }    
 }
