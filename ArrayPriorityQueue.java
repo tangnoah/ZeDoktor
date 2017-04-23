@@ -39,7 +39,7 @@ public class ArrayPriorityQueue{
     {
 	return (_data.size() == 0);
     }//O(1)
- 
+
     public static void main( String[] args){
 	ArrayPriorityQueue bob = new ArrayPriorityQueue();
 	bob.add( new Ticket("","",1 ));

@@ -22,6 +22,8 @@ public class HelpDesk {
 
 
     public static void main (String[] args) {
+	ArrayPriorityQueue helpQueue = new ArrayPriorityQueue();
+	Ticket customer;
 	uniqueIDs = new ArrayList<Integer>(10);
 	Scanner scanner = new Scanner(System.in);
 	int inputInt = -1;
@@ -66,6 +68,7 @@ public class HelpDesk {
 		    inputID = -1;
 		}
 	    }
+	    
 	}
 	
 	//if input == 2, create new Ticket
@@ -102,7 +105,11 @@ public class HelpDesk {
 		    }
 		}
 	    }
+	    uniqueIDs.add(ID);
+	    customer = new Ticket(nombre, problema, priority);
 	    System.out.println("Done! Your ticket ID is " + ID);
+	    helpQueue.add(customer);
+	    System.out.println(helpQueue.peekMin());
 	}
 	else if (inputInt == 3) {
 	    System.exit(0);
