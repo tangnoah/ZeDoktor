@@ -4,6 +4,7 @@
   2017-4-21*/
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class HelpDesk {
 
@@ -11,7 +12,8 @@ public class HelpDesk {
     private static String nombre;
     private static String problema;
     private static int importante;
-    private static int[] uniqueIDs;
+    private static ArrayList<Integer> uniqueIDs;
+    
     
     public static void clear(){
 	System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
@@ -20,6 +22,7 @@ public class HelpDesk {
 
 
     public static void main (String[] args) {
+	uniqueIDs = new ArrayList<Integer>(10);
 	Scanner scanner = new Scanner(System.in);
 	int inputInt = -1;
 	int inputID = -1;
@@ -50,8 +53,8 @@ public class HelpDesk {
 	}
 
 	if (inputInt == 1) {
+	    System.out.println("Please enter your Ticket ID number: ");
 	    while( inputID == -1){
-		System.out.println("Please enter your Ticket ID number: ");
 		inputStr =  scanner.nextLine();
 		try {
 		    inputID = Integer.parseInt( inputStr );
@@ -70,9 +73,32 @@ public class HelpDesk {
 	    inputStr = problema = scanner.nextLine();
 
 	    //Check for priority here
-	    
-	    System.out.println("Please wait for your ticket to process...");
+	    System.out.println("Please state your priority level");
+	    int priority = -1;
+	    while( priority == -1){
+		inputStr =  scanner.nextLine();
+		try {
+		    priority = Integer.parseInt( inputStr );
+		}
+		catch (Exception e){
+		    priority = -1;
+		}
+	    }
+
+
+	    System.out.println("Processing ticket and generating ID...");
 	    //Create and print new ID here
+	    int ID = -1;
+	    while ( ID == -1){
+		ID = (int)(Math.random() * 100);
+		for( Integer i: uniqueIDs){
+		    if (ID == i){
+			ID = -1;
+			break;
+		    }
+		}
+	    }
+	    System.out.println("Done! Your ticket ID is " + ID);
 	}
 	else if (inputInt == 3) {
 	    System.exit(0);
