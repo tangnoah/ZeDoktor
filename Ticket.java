@@ -10,12 +10,12 @@ public class Ticket implements Comparable {
     private int _priority; //0 is highest priority
 
     //CONSTRUCTOR
-    public Ticket (String name, String problem, int VIP) {
+    public Ticket (String name, String problem, int VIP, int id) {
 	_user = name;
 	_description = problem;
 	_priority = VIP;
 	_status = false;
-	//ID = will be set in HelpDesk
+	ID = id;
     }
     
     //GET METHODS
@@ -26,7 +26,6 @@ public class Ticket implements Comparable {
     public int getPriority() {return _priority;};
     
     //SET METHODS
-    public void setID(int id) {ID = id;}
     public void setStatus(boolean isSolved) {_status = isSolved;}
 
     //compareTo for priority
@@ -39,8 +38,8 @@ public class Ticket implements Comparable {
 	else 
 	    return -1;
     }
-    
-    public int  toString(){
-	return ID;
+
+    public String toString() {
+	return ID + "";
     }
 }
