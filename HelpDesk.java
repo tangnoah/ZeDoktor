@@ -14,10 +14,6 @@ public class HelpDesk {
     private static int importante;
     private static ArrayList<Integer> uniqueIDs;
     
-    
-    public static void clear(){
-	System.out.println("\n\n\n\n");
-    }
 
     public static void main (String[] args) {
 	ArrayPriorityQueue helpQueue = new ArrayPriorityQueue();
@@ -30,7 +26,7 @@ public class HelpDesk {
 	String message = "";
 	
 	while (true){
-	    clear();
+	    System.out.println("\n\n\n\n");
 	    
 	    //Startup and choice selection
 	    System.out.println("\nHeLlO aNd WeLcOmE tO tHe HeLp DeSk!");
@@ -73,7 +69,7 @@ public class HelpDesk {
 		else {
 		    System.out.println("Loading Ticket...");
 		    if (inputID == helpQueue.peekMin().getID()) {
-			int rand = (int)(Math.random() * 2);
+			int rand = (int)(Math.random() * 4); //random chance that the issue is resolved
 			if (rand == 0) {			    
 			    System.out.println("Your issue has been resolved. Thank you for coming to ZeDoktor");
 			    uniqueIDs.remove(uniqueIDs.indexOf(inputID));
