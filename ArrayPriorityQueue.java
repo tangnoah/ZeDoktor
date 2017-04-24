@@ -41,7 +41,7 @@ public class ArrayPriorityQueue{
     }//O(1)
 
     public static void main( String[] args){
-	ArrayPriorityQueue bob = new ArrayPriorityQueue();
+	/*ArrayPriorityQueue bob = new ArrayPriorityQueue();
 	bob.add( new Ticket("","",1 ));
 	bob.add( new Ticket("","",2 ));
 	bob.add( new Ticket("","",3 ));
@@ -60,7 +60,7 @@ public class ArrayPriorityQueue{
 	System.out.println(bob.removeMin());
 	System.out.println(bob.removeMin());
 	System.out.println(bob.removeMin());
-
+	*/
 	/*
 	bob.add(2);
 	bob.add(3);

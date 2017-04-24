@@ -26,15 +26,17 @@ public class HelpDesk {
 	String message = "";
 	
 	while (true){
-	    System.out.println("\n\n\n\n");
+	    System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	    
 	    //Startup and choice selection
 	    System.out.println("\nHeLlO aNd WeLcOmE tO tHe HeLp DeSk!");
-	    System.out.println( message );
+
 	    System.out.println("Please choose an option:\n");
 	    System.out.print("1:\tI have a Ticket ID\n");
 	    System.out.print("2:\tI have a problem\n");
-	    
+
+	    System.out.println( message );
+
 	    inputStr =  scanner.nextLine();
 	    try {
 		inputInt = Integer.parseInt( inputStr );
@@ -48,7 +50,7 @@ public class HelpDesk {
 		message = "Please select 1 or 2";
 		//inputInt = -1;
 	    }		
-
+	    
 	    //if input == 1, check for their Ticket ID
 	    if (inputInt == 1) {
 		System.out.println("Please enter your Ticket ID number: ");
@@ -63,9 +65,9 @@ public class HelpDesk {
 		}
 
 		if (helpQueue.isEmpty())
-		    System.out.println("There are no Tickets being processed. Please create a new Ticket");	       
+		    message = "There are no Tickets being processed. Please create a new Ticket";	       
 		else if (uniqueIDs.indexOf(inputID) == -1)
-		    System.out.println("Your Ticket ID has not been registered in the queue");
+		    message = "Your Ticket ID has not been registered in the queue";
 		else {
 		    System.out.println("Loading Ticket...");
 		    if (inputID == helpQueue.peekMin().getID()) {
@@ -126,7 +128,7 @@ public class HelpDesk {
 		customer = new Ticket(nombre, problema, priority, ID);
 		System.out.println("Done! Your ticket ID is " + ID);
 		helpQueue.add(customer);
-		
+		scanner.nextLine();
 		//reset choice selection
 		inputInt = inputID = -1;		
 	    }
