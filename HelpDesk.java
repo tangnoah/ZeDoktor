@@ -29,6 +29,7 @@ public class HelpDesk {
 	    System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	    
 	    //Startup and choice selection
+	    
 	    System.out.println("\nHeLlO aNd WeLcOmE tO tHe HeLp DeSk!");
 
 	    System.out.println("Please choose an option:\n");
@@ -64,6 +65,7 @@ public class HelpDesk {
 		    }
 		}
 
+
 		if (helpQueue.isEmpty())
 		    message = "There are no Tickets being processed. Please create a new Ticket";	       
 		else if (uniqueIDs.indexOf(inputID) == -1)
@@ -76,18 +78,25 @@ public class HelpDesk {
 			    System.out.println("Your issue has been resolved. Thank you for coming to ZeDoktor");
 			    uniqueIDs.remove(uniqueIDs.indexOf(inputID));
 			    helpQueue.removeMin();			    
+			    scanner.nextLine();
+			    message = "";
 			}
 			else {
 			    System.out.println("Your issue is being processed. Please come back again");
+			    scanner.nextLine();
+			    message = "";
 			}
 		    }
 		    else {
 			System.out.println("Sorry, we are busy with another customer. Please try again later.");
+			scanner.nextLine();
+			message = "";
 		    }
 		}
 		
 		//reset choice selection
 		inputInt = inputID = -1;
+
 	    }
 	
 	    //if input == 2, create new Ticket
@@ -127,7 +136,9 @@ public class HelpDesk {
 		uniqueIDs.add(ID);
 		customer = new Ticket(nombre, problema, priority, ID);
 		System.out.println("Done! Your ticket ID is " + ID);
+
 		helpQueue.add(customer);
+
 		scanner.nextLine();
 		//reset choice selection
 		inputInt = inputID = -1;		
