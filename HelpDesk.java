@@ -16,10 +16,8 @@ public class HelpDesk {
     
     
     public static void clear(){
-	System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	System.out.println("\n\n\n\n");
     }
-
-
 
     public static void main (String[] args) {
 	ArrayPriorityQueue helpQueue = new ArrayPriorityQueue();
@@ -30,11 +28,12 @@ public class HelpDesk {
 	int inputID = -1;
 	String inputStr;
 	String message = "";
-	while (inputInt == -1){
+	
+	while (true){
 	    clear();
 	    
 	    //Startup and choice selection
-	    System.out.println("\nHeLlO aNd WeLcOmE tO tHe HeLp DeSk!\n\n");
+	    System.out.println("\nHeLlO aNd WeLcOmE tO tHe HeLp DeSk!");
 	    System.out.println( message );
 	    System.out.println("Please choose an option:\n");
 	    System.out.print("1:\tI have a Ticket ID\n");
@@ -46,73 +45,95 @@ public class HelpDesk {
 	    }
 	    catch (Exception e){
 		message = "Selection not understood; please enter a number.";
-		inputInt = -1;
+		//inputInt = -1;
 	    }
 	    if( inputInt != -1 && inputInt != 1 
 		&& inputInt != 2){
 		message = "Please select 1 or 2";
-		inputInt = -1;}
-		
-	}
+		//inputInt = -1;
+	    }		
 
-	//if input == 1, check for their Ticket ID
-	if (inputInt == 1) {
-	    System.out.println("Please enter your Ticket ID number: ");
-	    while( inputID == -1){
-		inputStr =  scanner.nextLine();
-		try {
-		    inputID = Integer.parseInt( inputStr );
-		}
-		catch (Exception e){
-		    inputID = -1;
-		}
-	    }
-	    
-	}
-	
-	//if input == 2, create new Ticket
-	else if (inputInt == 2) {
-	    //Store name
-	    System.out.print("Please state your name: ");
-	    inputStr = nombre = scanner.nextLine();
-	    //Store problem
-	    System.out.print("Please state your problem:\n");
-	    inputStr = problema = scanner.nextLine();
-
-	    //Check for priority here
-	    System.out.println("Please state your priority level");
-	    int priority = -1;
-	    while( priority == -1){
-		inputStr =  scanner.nextLine();
-		try {
-		    priority = Integer.parseInt( inputStr );
-		}
-		catch (Exception e){
-		    priority = -1;
-		}
-	    }
-	    
-	    System.out.println("Processing ticket and generating ID...");
-	    //Create and print new ID here
-	    int ID = -1;
-	    while ( ID == -1){
-		ID = (int)(Math.random() * 100);
-		for( Integer i: uniqueIDs){
-		    if (ID == i){
-			ID = -1;
-			break;
+	    //if input == 1, check for their Ticket ID
+	    if (inputInt == 1) {
+		System.out.println("Please enter your Ticket ID number: ");
+		while( inputID == -1){
+		    inputStr =  scanner.nextLine();
+		    try {
+			inputID = Integer.parseInt( inputStr );
+		    }
+		    catch (Exception e){
+			inputID = -1;
 		    }
 		}
+
+		if (helpQueue.isEmpty())
+		    System.out.println("There are no Tickets being processed. Please create a new Ticket");	       
+		else if (uniqueIDs.indexOf(inputID) == -1)
+		    System.out.println("Your Ticket ID has not been registered in the queue");
+		else {
+		    System.out.println("Loading Ticket...");
+		    if (inputID == helpQueue.peekMin().getID()) {
+			int rand = (int)(Math.random() * 2);
+			if (rand == 0) {			    
+			    System.out.println("Your issue has been resolved. Thank you for coming to ZeDoktor");
+			    uniqueIDs.remove(uniqueIDs.indexOf(inputID));
+			    helpQueue.removeMin();			    
+			}
+			else {
+			    System.out.println("Your issue is being processed. Please come back again");
+			}
+		    }
+		    else {
+			System.out.println("Sorry, we are busy with another customer. Please try again later.");
+		    }
+		}
+		
+		//reset choice selection
+		inputInt = inputID = -1;
 	    }
-	    uniqueIDs.add(ID);
-	    customer = new Ticket(nombre, problema, priority);
-	    System.out.println("Done! Your ticket ID is " + ID);
-	    helpQueue.add(customer);
-	    /*System.out.println("We are currently busy. Please wait until we can process your problem");
-	    if (helpQueue.peekMin() = customer.getID()){
-		System.out.println("Thank you for waiting! It seems your problem is " + customer.getProb());
+	
+	    //if input == 2, create new Ticket
+	    else if (inputInt == 2) {
+		//Store name
+		System.out.print("Please state your name: ");
+		inputStr = nombre = scanner.nextLine();
+		//Store problem
+		System.out.print("Please state your problem:\n");
+		inputStr = problema = scanner.nextLine();
+
+		//Check for priority here
+		System.out.println("Please state your priority level");
+		int priority = -1;
+		while( priority == -1){
+		    inputStr =  scanner.nextLine();
+		    try {
+			priority = Integer.parseInt( inputStr );
+		    }
+		    catch (Exception e){
+			priority = -1;
+		    }
+		}
+	    
+		System.out.println("Processing ticket and generating ID...");
+		//Create and print new ID here
+		int ID = -1;
+		while ( ID == -1){
+		    ID = (int)(Math.random() * 100);
+		    for( Integer i: uniqueIDs){
+			if (ID == i){
+			    ID = -1;
+			    break;
+			}
+		    }
+		}
+		uniqueIDs.add(ID);
+		customer = new Ticket(nombre, problema, priority, ID);
+		System.out.println("Done! Your ticket ID is " + ID);
+		helpQueue.add(customer);
+		
+		//reset choice selection
+		inputInt = inputID = -1;		
 	    }
-	    System.out.println(helpQueue.peekMin());*/
-	}
-    }    
+	}    
+    }
 }
