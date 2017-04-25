@@ -7,4 +7,4 @@ For ArrayPriorityQueue, we decided to enqueue to the left of the array and deque
 
 In order to enqueue the Tickets into their correct places by priority, we implemented Comparable into the TIcket class. This allowed us to overwrite the compareTo method so that it would compare the priorities of two Tickets.
 
-For HelpDesk, we chose to create a menu that the user would interact with through the CLI. The choices include checking for a Ticket ID and creating a new ticket. We decided that the menu and its selections should be run through a while loop so that we are able to maintain multiple Tickets in the queue.
+For HelpDesk, we designed it according to the flowchart we created in class where one would go up to the help desk and create a ticket, diagnose the problem, and solve the problem.
